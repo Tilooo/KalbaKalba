@@ -6,6 +6,7 @@ NUM_BOXES = 5
 BOXES = range(1, NUM_BOXES + 1)
 
 class Card(models.Model):
+    objects = None
     question = models.CharField(max_length=100)
     answer = models.CharField(max_length=100)
     box = models.IntegerField(
