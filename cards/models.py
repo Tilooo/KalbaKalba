@@ -27,4 +27,3 @@ class Card(models.Model):
 
         return self
 
-
