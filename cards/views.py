@@ -1,5 +1,3 @@
-# cards/views.py
-
 import random
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404, redirect
@@ -23,10 +21,6 @@ class CardCreateView(CreateView):
 class CardUpdateView(CardCreateView, UpdateView):
     success_url = reverse_lazy("card-list")
 
-class CardUpdateView(CardCreateView, UpdateView):
-    success_url = reverse_lazy("card-list")
-
-
 class BoxView(CardListView):
     template_name = "cards/box.html"
     form_class = CardCheckForm
@@ -48,3 +42,4 @@ class BoxView(CardListView):
             card.move(form.cleaned_data["solved"])
 
         return redirect(request.META.get("HTTP_REFERER"))
+

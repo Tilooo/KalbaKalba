@@ -1,22 +1,22 @@
 <!-- cards/templates/cards/base.html -->
 
+{% load static %}
+
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
     <title>Tilo</title>
+    <link rel="stylesheet" href="{% static 'cards/styles.css' %}">
     <link rel="icon" href="path/to/favicon.ico" type="image/x-icon">
 
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
-</head>
-
-<style>
-    /* Custom CSS */
+     <style>
+        /* Custom CSS */
 
     :root {
         --accent: #6e48ad;
@@ -59,7 +59,10 @@
     input, select, textarea {
         width: 100%;
     }
-</style>
+    </style>
+    <!-- Other meta tags and stylesheets -->
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+</head>
 
 <body>
     <header>
