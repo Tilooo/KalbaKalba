@@ -1,12 +1,9 @@
-# cards/models.py
-
 from django.db import models
 
 NUM_BOXES = 5
 BOXES = range(1, NUM_BOXES + 1)
 
 class Card(models.Model):
-    objects = None
     question = models.CharField(max_length=100)
     answer = models.CharField(max_length=100)
     box = models.IntegerField(
@@ -26,4 +23,20 @@ class Card(models.Model):
             self.save()
 
         return self
+
+
+class LanguageSet(models.Model):
+    language_pair = models.CharField(max_length=255)
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    # Add any other fields as needed
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = "Language Sets"
+
+
+
 

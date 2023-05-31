@@ -8,6 +8,9 @@ from django.views.generic import (
 )
 from .forms import CardCheckForm
 from .models import Card
+from django.shortcuts import render
+from .models import LanguageSet
+
 
 class CardListView(ListView):
     model = Card
@@ -42,4 +45,10 @@ class BoxView(CardListView):
             card.move(form.cleaned_data["solved"])
 
         return redirect(request.META.get("HTTP_REFERER"))
+
+def language_sets(request):
+    language_sets = LanguageSet.objects.all()
+    return render(request, 'language_sets.html', {'language_sets': language_sets})
+
+
 
