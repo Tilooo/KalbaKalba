@@ -1,7 +1,7 @@
 # cards/forms.py
 
 from django import forms
-from .models import LanguageSet
+from cards.models import LanguageSet
 
 
 class CardCheckForm(forms.Form):

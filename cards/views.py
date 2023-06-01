@@ -1,27 +1,26 @@
-import random
 from django.urls import reverse_lazy
-from django.views.generic import (
-    ListView,
-    CreateView,
-    UpdateView,
-)
-from .forms import CardCheckForm, LanguageSetForm
-from .models import Card
+from django.views.generic import ListView, CreateView, UpdateView
+from cards.forms import CardCheckForm, LanguageSetForm
+from cards.models import Card, LanguageSet
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import LanguageSet
+import random
+
 
 
 class CardListView(ListView):
     model = Card
     queryset = Card.objects.all().order_by("box", "-date_created")
 
+
 class CardCreateView(CreateView):
     model = Card
     fields = ["question", "answer", "box"]
     success_url = reverse_lazy("card-create")
 
+
 class CardUpdateView(CardCreateView, UpdateView):
     success_url = reverse_lazy("card-list")
+
 
 class BoxView(CardListView):
     template_name = "cards/box.html"
@@ -45,6 +44,7 @@ class BoxView(CardListView):
 
         return redirect(request.META.get("HTTP_REFERER"))
 
+
 def language_sets(request):
     language_sets = LanguageSet.objects.all()
     return render(request, 'language_sets.html', {'language_sets': language_sets})
@@ -59,6 +59,13 @@ def create_language_set(request):
     else:
         form = LanguageSetForm()
     return render(request, 'create_language_set.html', {'form': form})
+
+
+def dashboard_view(request):
+    # Your dashboard view logic here
+    pass
+
+
 
 
 
