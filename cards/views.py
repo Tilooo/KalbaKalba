@@ -1,14 +1,13 @@
 import random
 from django.urls import reverse_lazy
-from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import (
     ListView,
     CreateView,
     UpdateView,
 )
-from .forms import CardCheckForm
+from .forms import CardCheckForm, LanguageSetForm
 from .models import Card
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import LanguageSet
 
 
@@ -49,6 +48,17 @@ class BoxView(CardListView):
 def language_sets(request):
     language_sets = LanguageSet.objects.all()
     return render(request, 'language_sets.html', {'language_sets': language_sets})
+
+
+def create_language_set(request):
+    if request.method == 'POST':
+        form = LanguageSetForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # Redirect to a success page or perform any other desired action
+    else:
+        form = LanguageSetForm()
+    return render(request, 'create_language_set.html', {'form': form})
 
 
 

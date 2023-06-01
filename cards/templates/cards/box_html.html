@@ -3,6 +3,9 @@
 {% extends "cards/base.html" %}
 {% load humanize %}
 
+
+<a href="{% url 'language_sets' %}">View Language Sets</a>
+
 {% block content %}
     <h2>🗃 {{ box_number | ordinal }} Box</h2>
     <mark>{{ object_list | length }}</mark> Card{{ object_list | pluralize }} left in box.

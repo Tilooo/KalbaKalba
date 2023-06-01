@@ -28,6 +28,7 @@ class Card(models.Model):
 class LanguageSet(models.Model):
     language_pair = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
+    name = models.CharField(max_length=100)
     description = models.TextField()
     # Add any other fields as needed
 
@@ -36,7 +37,3 @@ class LanguageSet(models.Model):
 
     class Meta:
         verbose_name_plural = "Language Sets"
-
-
-
-
